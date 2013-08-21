@@ -8,6 +8,23 @@
 </head>
 <body>
 
+<% if flash[:alert] %>
+	<div class="alert alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<%= flash[:alert] %>
+	</div>
+<% elsif flash[:notice] %>
+	<div class="alert alert-dismissable alert-success">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+<% elsif flash[:error] %>
+	<div class="alert alert-dismissable alert-danger">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<%= flash[:error] %>
+	</div>
+<% end %>
+
 <%= yield %>
 
 </body>
