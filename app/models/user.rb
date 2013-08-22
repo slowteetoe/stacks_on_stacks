@@ -1,5 +1,8 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
+  has_many :questions
 
   validates_presence_of :username
   validates_uniqueness_of :username
