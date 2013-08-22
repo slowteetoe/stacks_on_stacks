@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.username = current_user.username
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
