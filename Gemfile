@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'slim'
+gem 'tire'
 gem 'puma'
 
 group :doc do
