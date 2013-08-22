@@ -2,7 +2,7 @@ class Question
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user, foreign_key: 'username'
+  belongs_to :user
   embeds_many :answers
   embeds_many :comments
 
