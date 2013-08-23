@@ -4,26 +4,13 @@
 
       <h1>Listing Questions</h1>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Body</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @questions.each do |question| %>
-            <tr>
-              <td><%= question.title %></td>
-              <td><%= question.body %></td>
-              <td><%= link_to 'Show', question %></td>
-              <td><%= link_to 'Edit', edit_question_path(question) %></td>
-              <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <ul class="list-group">
+        <% @questions.each do |question| %>
+          <li class="list-group-item">
+            <%= link_to question.title, question %>
+          </li>
+        <% end %>
+      </ul>
 
     </div>
   </div>
