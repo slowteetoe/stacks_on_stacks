@@ -1,21 +1,22 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
-
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for @question do |f| %>
+  <% @question.errors.each do |attr, msg| %>
+    <p><%= msg %></p>
   <% end %>
-
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_field :body %>
+  <div class="form-group">
+    <%= f.label :title, class: "control-label" %>
+    <div>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.label :body, class: "control-label" %>
+    <div>
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="action">
+      <%= f.submit "Ask This", class: "btn btn-default" %>
+    </div>
   </div>
 <% end %>

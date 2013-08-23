@@ -2,21 +2,20 @@
   <div class="row">
     <div class="col-xs-12">
 
-      <h1>Listing questions</h1>
+      <h1>Listing Questions</h1>
 
       <table>
         <thead>
           <tr>
+            <th>Title</th>
             <th>Body</th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
 
         <tbody>
           <% @questions.each do |question| %>
             <tr>
+              <td><%= question.title %></td>
               <td><%= question.body %></td>
               <td><%= link_to 'Show', question %></td>
               <td><%= link_to 'Edit', edit_question_path(question) %></td>
