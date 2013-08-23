@@ -16,13 +16,21 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">Stacks On Stacks</a>
+    <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown">Stacks On Stacks <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Questions</a></li>
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Tags</a></li>
+    </ul>
   </div>
 
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="#">Questions</a></li>
-      <li><a href="#">Users</a></li>
+      <li>
+        <a class="nav-btn" href="/">
+          <button class="btn btn-warning">Ask a Question</button>
+        </a>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
 	    <form name="search" action="<%= search_path %>" class="navbar-form navbar-left" role="search">

@@ -7,6 +7,7 @@ class Question
   embeds_many :comments
 
   field :body, type: String
+  field :title, type: String
   field :username, type: String
 
 end
