@@ -2,9 +2,10 @@
 // 												 LAYOUT 											  //
 ////////////////////////////////////////////////////////////
 
-#searchbar {margin-top: 60px;}
+#home, #signin, #signup, #signedit, #reset {padding-top: 60px;}
 .alert {text-align: center; -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
-
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {color: #111;}
+.navbar {margin-bottom: 0px;}
 
 
 ////////////////////////////////////////////////////////////
