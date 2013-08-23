@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/karmi/tire.git
+  revision: 1341e9ee36162d10564716144b1942125e722c6b
+  specs:
+    tire (0.6.0)
+      activemodel (>= 3.0)
+      activesupport
+      ansi
+      hashr (~> 0.0.19)
+      multi_json (~> 1.3)
+      rake
+      rest-client (~> 1.6)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: d0fc225a81a27dfdd69f17134a564208bbe501c6
   specs:
@@ -41,7 +54,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: a3bf24ada94be7c32ccf79f3c2e9521394550f4f
+  revision: 5608c90e1d25ca348e149cf658228ce0a1441288
   branch: 4-0-stable
   specs:
     actionmailer (4.0.0)
@@ -92,20 +105,20 @@ GIT
 
 GIT
   remote: git://github.com/rspec/rspec-core.git
-  revision: 472861e3391befa60ae015a3e94de6d59c5e3a27
+  revision: c93febafeb8e6703b257f4849692e6e3fcb6fadb
   specs:
     rspec-core (3.0.0.pre)
 
 GIT
   remote: git://github.com/rspec/rspec-expectations.git
-  revision: 4ccacb8a720aa671374bed0e225d20e6e092271f
+  revision: da3c5172baada490e04c922dc4666f630473d252
   specs:
     rspec-expectations (3.0.0.pre)
       diff-lcs (>= 1.1.3, < 2.0)
 
 GIT
   remote: git://github.com/rspec/rspec-mocks.git
-  revision: 046dd46df2ff514cd0577c1e7da0a0ea327580fc
+  revision: 80d70b43bcc373f9e69c11c402fee39ca1ead5ea
   specs:
     rspec-mocks (3.0.0.pre)
 
@@ -223,14 +236,6 @@ GEM
     thread_safe (0.1.2)
       atomic
     tilt (1.4.1)
-    tire (0.6.0)
-      activemodel (>= 3.0)
-      activesupport
-      ansi
-      hashr (~> 0.0.19)
-      multi_json (~> 1.3)
-      rake
-      rest-client (~> 1.6)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -270,6 +275,6 @@ DEPENDENCIES
   sdoc
   slim
   therubyracer
-  tire
+  tire!
   turbolinks
   uglifier (>= 1.3.0)

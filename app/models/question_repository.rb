@@ -1,5 +1,5 @@
 class QuestionRepository
-  POSTS_PER_PAGE = 5
+  POSTS_PER_PAGE = 20
 
   attr_accessor :params, :posts_per_page
 
@@ -9,19 +9,13 @@ class QuestionRepository
   end
 
   def search
-    query = params[:query]
-    # fake it until we have a questions model
-    return { :title => "Why does this not appear?", :accepted_answer => "It should.", :original_query => query }
-    model.tire.search(load: true, page: params[:page], per_page: posts_per_page) do
-      query { string query, default_operator: "AND" } if query.present?
-      filter :range, published_at: { lte: Time.zone.now }
-      sort { by :published_at, "desc" } if query.blank?
+    q = params[:query]
+    Question.tire.search(load: true, page: params[:page], per_page: posts_per_page) do
+      query { string q, default_operator: "AND" } if q.present?
+      #filter :range, created_at: { lte: Time.zone.now }
+      sort { by :created_at, "desc" } if q.blank?
     end
+
   end
 
-  protected
-
-  def model
-    Question
-  end
 end
