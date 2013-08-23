@@ -26,6 +26,11 @@ end
 
 gem 'capistrano', group: :development
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 group :test, :development do
   gem 'pry'
   gem 'rspec-core', github: 'rspec/rspec-core'

@@ -11,8 +11,7 @@ class QuestionRepository
   def search
     q = params[:query]
     Question.tire.search(load: true, page: params[:page], per_page: posts_per_page) do
-      query { string q, default_operator: "AND" } if q.present?
-      #filter :range, created_at: { lte: Time.zone.now }
+      query { string q, default_operator: "OR" } if q.present?
       sort { by :created_at, "desc" } if q.blank?
     end
 

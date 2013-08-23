@@ -142,6 +142,11 @@ GEM
     arel (4.0.0)
     atomic (1.1.13)
     bcrypt-ruby (3.1.1)
+    better_errors (0.9.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bson (1.8.6)
     bson_ext (1.8.6)
       bson (~> 1.8.6)
@@ -158,6 +163,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     database_cleaner (1.1.1)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.0)
@@ -254,6 +260,8 @@ PLATFORMS
 DEPENDENCIES
   activerecord-deprecated_finders!
   bcrypt-ruby (~> 3.1.0)
+  better_errors
+  binding_of_caller
   bson_ext (~> 1.8.6)
   capistrano
   coffee-rails!
