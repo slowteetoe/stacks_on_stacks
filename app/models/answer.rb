@@ -6,5 +6,6 @@ class Answer
   embeds_many :comments
 
   field :body, type: String
+  field :author, type: String
 
 end

@@ -6,8 +6,19 @@
 
     	<%= @question.body %> <br><br>
 
+    	<strong>Author: </strong> <%= @question.author %> <br><br>
+
+    	
+
     	<%= link_to 'Edit', edit_question_path(@question) %> |
 			<%= link_to 'Home', '/' %>
+
+			<br>
+			<hr>
+
+			<h3>Your Answer</h3>
+
+			
 
     </div>
   </div>
