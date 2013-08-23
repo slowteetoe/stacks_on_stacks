@@ -8,7 +8,7 @@ class Question
 
   field :body, type: String
   field :title, type: String
-  field :username, type: String
+  field :author, type: String
 
   # Make this model searchable via elasticsearch
   include Tire::Model::Search
@@ -28,7 +28,7 @@ class Question
       indexes :title, analyzer: :snowball, boost: 100
       indexes :answers
       indexes :comments
-      indexes :username, index: :not_analyzed
+      indexes :author, index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
     end
   end

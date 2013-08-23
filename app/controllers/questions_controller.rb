@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @answer = Answer.new
   end
 
   def new
@@ -19,7 +20,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.username = current_user.username
+    @question.author = current_user.username
     @question.user = current_user
 
     respond_to do |format|

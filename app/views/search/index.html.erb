@@ -7,7 +7,7 @@
       <ul class="list-group">
         <% @questions.each do |q| %>
           <li class="list-group-item">
-            <%= link_to q.title || q.body, q %> - <%= q.created_at %> - <%= q.username %>
+            <%= link_to q.title || q.body, q %> - <%= q.created_at %> - <%= q.author %>
           </li>
         <% end %>
       </ul>
