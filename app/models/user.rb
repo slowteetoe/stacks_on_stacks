@@ -3,7 +3,8 @@ class User
   include Mongoid::Timestamps
 
   has_many :questions
-  # field :_id, type: String, default: ->{username}
+
+  has_one :profile, autosave: true, autobuild: true
 
   validates_presence_of :username
   validates_uniqueness_of :username
@@ -45,4 +46,5 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
 end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Display name:</strong>
+  <%= @profile.display_name %>
+</p>
+
+<p>
+  <strong>Gravatar email:</strong>
+  <%= @profile.gravatar_email %>
+</p>
+
+<p>
+  <strong>Tagline:</strong>
+  <%= @profile.tagline %>
+</p>
+
+<p>
+  <strong>Reputation:</strong>
+  <%= @profile.reputation %>
+</p>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
