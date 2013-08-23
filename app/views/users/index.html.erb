@@ -1,13 +1,13 @@
-<div id="qindex" class="container">
+<div id="userindex" class="container">
   <div class="row">
     <div class="col-xs-12">
 
-      <h1>Listing Questions</h1>
+      <h1>Listing Users</h1>
 
       <ul class="list-group">
-        <% @questions.each do |question| %>
+        <% @users.each do |user| %>
           <li class="list-group-item">
-            <%= link_to question.title, question %>
+            <%= link_to user.username, "/users/#{user.id}" %>
           </li>
         <% end %>
       </ul>

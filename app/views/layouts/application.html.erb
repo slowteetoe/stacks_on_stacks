@@ -18,8 +18,8 @@
     </button>
     <a href="#" class="navbar-brand dropdown-toggle" data-toggle="dropdown">Stacks On Stacks <b class="caret"></b></a>
     <ul class="dropdown-menu">
-      <li><a href="#">Questions</a></li>
-      <li><a href="#">Users</a></li>
+      <li><a href="/">Questions</a></li>
+      <li><a href="/users">Users</a></li>
       <li><a href="#">Tags</a></li>
     </ul>
   </div>
@@ -27,7 +27,7 @@
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
       <li>
-        <a class="nav-btn" href="/">
+        <a class="nav-btn" href="/questions/new">
           <button class="btn btn-warning">Ask a Question</button>
         </a>
       </li>
@@ -42,8 +42,13 @@
           Search!
         </button>
 	    </form>
-      <li><a href="/users/sign_up">Sign Up</a></li>
-      <li><a href="/users/sign_in">Sign In</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Hi #{current_user.username}!", "/users/#{current_user.id}" %></li>
+        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><a href="/users/sign_up">Sign Up</a></li>
+        <li><a href="/users/sign_in">Sign In</a></li>
+      <% end %>
     </ul>
   </div>
 </nav>
