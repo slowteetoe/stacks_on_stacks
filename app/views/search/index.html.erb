@@ -1,4 +1,4 @@
 <h1>Search Results</h1>
 <% @questions.each do |q| %>
-  <p><%= link_to q.body, q %> - <%= q.created_at %> - <%= q.username %></p>
+  <p><%= link_to q.title || q.body, q %> - <%= q.created_at %> - <%= q.username %></p>
 <% end %>
