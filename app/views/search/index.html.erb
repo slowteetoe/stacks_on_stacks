@@ -1,4 +1,17 @@
-<h1>Search Results</h1>
-<% @questions.each do |q| %>
-  <p><%= link_to q.title || q.body, q %> - <%= q.created_at %> - <%= q.username %></p>
-<% end %>
+<div id="results" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <h1>Search Results</h1>
+
+      <ul class="list-group">
+        <% @questions.each do |q| %>
+          <li class="list-group-item">
+            <%= link_to q.title || q.body, q %> - <%= q.created_at %> - <%= q.username %>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
