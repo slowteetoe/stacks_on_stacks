@@ -1,11 +1,14 @@
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @question.body %>
-</p>
+<div id="qshow" class="container">
+  <div class="row">
+    <div class="col-xs-12">
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', '/' %>
+    	<h1><%= @question.title %></h1>
+
+    	<%= @question.body %> <br><br>
+
+    	<%= link_to 'Edit', edit_question_path(@question) %> |
+			<%= link_to 'Home', '/' %>
+
+    </div>
+  </div>
+</div>
