@@ -8,7 +8,7 @@
 
     	<p><strong>author: </strong> <%= @question.author %><p>
 
-    	<p>
+    	<br><p>
 				<%= link_to 'Edit', edit_question_path(@question) %> |
 				<%= link_to 'Home', '/' %>
 			<p><br>
@@ -21,13 +21,12 @@
 			    <p><strong>author: </strong> <%= answer.author %></p>
 			    <hr>
 			  <% end %>
-			<% end %><br>
+			<% end %>
 
 			<h3>Your Answer</h3>
 
 			<%= form_for [@question, Answer.new] do |f| %>
 			  <div class="form-group">
-			    <%= f.label :body, class: "control-label" %>
 			    <div>
 			      <%= f.text_area :body, rows: 8, class: "form-control" %>
 			    </div>
