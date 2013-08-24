@@ -1,13 +1,15 @@
 class AnswersController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :edit]
-
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.build(answer_params)
-    @answer.author = current_user.username
-    @answer.save!
-    redirect_to @question, :notice => "Answer submitted!"  
+    if user_signed_in?
+      @question = Question.find(params[:question_id])
+      @answer = @question.answers.build(answer_params)
+      @answer.author = current_user.username
+      @answer.save!
+      redirect_to @question, notice: "Answer submitted!"
+    else
+      redirect_to '/users/sign_in', alert: "You need to sign in or sign up before continuing."
+    end
   end
 
   private

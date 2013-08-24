@@ -17,3 +17,9 @@ h1 {margin-bottom: 40px;}
 // 							  			  QUESTIONS 	  								  //
 ////////////////////////////////////////////////////////////
 
+#qshow {
+	#question {margin-bottom: 40px;}
+	#answers {border-bottom: 1px solid #ddd; padding-bottom: 10px;}
+	.answer {border-bottom: 1px solid #ddd; margin-bottom: 10px;}
+	.comment {border-top: 1px dashed #ddd; margin-bottom: 10px; padding-top: 10px;}
+}

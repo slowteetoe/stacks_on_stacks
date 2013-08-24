@@ -1,43 +1,61 @@
 <div id="qshow" class="container">
-  <div class="row">
-    <div class="col-xs-12">
+	<div class="row">
+		<div class="col-xs-12">
 
-    	<h1><%= @question.title %></h1>
+			<div id="question">
+				<h1><%= @question.title %></h1>
+				<p><%= @question.body %></p>
+				<p><strong>author: </strong> <%= @question.author %></p>
 
-    	<p><%= @question.body %><p>
+				<% if @question.comments.size > 0 %>
+					<br>
+					<% for comment in @question.comments %>
+						<div class="comment">
+							<p><%= comment.body %> - <%= comment.author %></p>
+						</div>
+					<% end %>
+				<% end %>
 
-    	<p><strong>author: </strong> <%= @question.author %><p>
-
-    	<br><p>
-				<%= link_to 'Edit', edit_question_path(@question) %> |
-				<%= link_to 'Home', '/' %>
-			<p><br>
+				<%= form_for [@question, Comment.new] do |f| %>
+					<div class="form-group">
+						<div>
+							<%= f.text_area :body, class: "form-control" %>
+							<%= f.hidden_field :parent, value: "question" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="action">
+							<%= f.submit "Submit Comment", class: "btn btn-default" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
 
 			<% if @question.answers.size > 0 %>
-			  <h3>Answers</h3>
-			  <% for answer in @question.answers %>
-			  	<hr>
-			    <p><%= answer.body %></p>
-			    <p><strong>author: </strong> <%= answer.author %></p>
-			    <hr>
-			  <% end %>
+				<h3 id="answers">Answers</h3>
+				<% for answer in @question.answers %>
+					<div class="answer">
+						<p><%= answer.body %></p>
+						<p><strong>author: </strong> <%= answer.author %></p>
+					</div>
+				<% end %>
 			<% end %>
 
 			<h3>Your Answer</h3>
 
 			<%= form_for [@question, Answer.new] do |f| %>
-			  <div class="form-group">
-			    <div>
-			      <%= f.text_area :body, rows: 8, class: "form-control" %>
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <div class="action">
-			      <%= f.submit "Submit Answer", class: "btn btn-default" %>
-			    </div>
-			  </div>
+				<div class="form-group">
+					<div>
+						<%= f.text_area :body, rows: 8, class: "form-control" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="action">
+						<%= f.submit "Submit Answer", class: "btn btn-default" %>
+					</div>
+				</div>
 			<% end %>
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>

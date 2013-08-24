@@ -7,5 +7,6 @@ class Comment
 
   field :body, type: String
   field :author, type: String
+  field :parent, type: String
 
 end
