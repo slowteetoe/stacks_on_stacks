@@ -4,21 +4,40 @@
 
     	<h1><%= @question.title %></h1>
 
-    	<%= @question.body %> <br><br>
+    	<p><%= @question.body %><p>
 
-    	<strong>Author: </strong> <%= @question.author %> <br><br>
+    	<p><strong>author: </strong> <%= @question.author %><p>
 
-    	
+    	<p>
+				<%= link_to 'Edit', edit_question_path(@question) %> |
+				<%= link_to 'Home', '/' %>
+			<p><br>
 
-    	<%= link_to 'Edit', edit_question_path(@question) %> |
-			<%= link_to 'Home', '/' %>
-
-			<br>
-			<hr>
+			<% if @question.answers.size > 0 %>
+			  <h3>Answers</h3>
+			  <% for answer in @question.answers %>
+			  	<hr>
+			    <p><%= answer.body %></p>
+			    <p><strong>author: </strong> <%= answer.author %></p>
+			    <hr>
+			  <% end %>
+			<% end %><br>
 
 			<h3>Your Answer</h3>
 
-			
+			<%= form_for [@question, Answer.new] do |f| %>
+			  <div class="form-group">
+			    <%= f.label :body, class: "control-label" %>
+			    <div>
+			      <%= f.text_area :body, rows: 8, class: "form-control" %>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="action">
+			      <%= f.submit "Submit Answer", class: "btn btn-default" %>
+			    </div>
+			  </div>
+			<% end %>
 
     </div>
   </div>
