@@ -6,19 +6,19 @@
 				<div class="row">
 					<div id="qvote" class="col-xs-2">
 						<span class="glyphicon glyphicon-chevron-up"></span><br>
-						<span class="vcount">2</span><br>
+						<span class="vcount">35</span><br>
 						<span class="glyphicon glyphicon-chevron-down"></span>
 					</div>
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
-						<p><%= @question.body %></p>
+						<p><%= fix_code_tags @question.body %></p>
 						<p><strong>author: </strong> <%= @question.author %></p><br>
 
 						<% if @question.comments.size > 0 %>
 							<div class="comments">
 								<% for comment in @question.comments %>
 									<div class="comment">
-										<p><%= comment.body %> - <%= comment.author %></p>
+										<p><%= fix_code_tags comment.body %> - <%= comment.author %></p>
 									</div>
 								<% end %>
 							</div>
@@ -56,18 +56,18 @@
 						<div class="row">
 							<div class="col-xs-2 avote">
 								<span class="glyphicon glyphicon-chevron-up"></span><br>
-								<span class="vcount">0</span><br>
+								<span class="vcount">2</span><br>
 								<span class="glyphicon glyphicon-chevron-down"></span>
 							</div>
 							<div class="col-xs-10 abody">
-								<p><%= answer.body %></p>
+								<p><%= fix_code_tags answer.body %></p>
 								<p><strong>author: </strong> <%= answer.author %></p>
 
 								<% if answer.comments.size > 0 %>
 									<div class="comments">
 										<% for comment in answer.comments %>
 											<div class="comment">
-												<p><%= comment.body %> - <%= comment.author %></p>
+												<p><%= fix_code_tags comment.body %> - <%= comment.author %></p>
 											</div>
 										<% end %>
 									</div>
