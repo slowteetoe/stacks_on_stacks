@@ -25,6 +25,7 @@ h1 {margin-bottom: 40px;}
 	#answers {padding: 0px 15px 10px 0px;}
 	#answers h3, #yours h3 {margin-top: -10px;}
 	.answer {margin-bottom: 10px;}
+	.answer .author {margin-bottom: 30px;}
 	.avote {padding-top: 5px;}
 	.abody {border-top: 1px solid #ccc; padding: 10px 15px 30px 0px;}
 	.comments {border-bottom: 1px dashed #ddd;}
@@ -34,8 +35,8 @@ h1 {margin-bottom: 40px;}
 	.cmntform {display: none;}
 	.glyphicon-chevron-up {padding-left: 1px;}
 	.glyphicon-chevron-down {padding-right: 3px; line-height: 24px;}
-	.glyphicon-chevron-up, .glyphicon-chevron-down {font-size: 28px; height: 32px; width: 32px; color: #777;}
+	.glyphicon-chevron-up, .glyphicon-chevron-down {font-size: 28px; height: 32px; width: 32px; color: #999;}
 	.glyphicon-chevron-up:hover, .glyphicon-chevron-down:hover {cursor: pointer; color: #ED9C28;}
-	.vcount {font-size: 36px; line-height: 28px; font-weight: bolder; z-index: -1; color: #777;}
+	.vcount {font-size: 36px; line-height: 28px; font-weight: bolder; z-index: -1; color: #999;}
 	.vcount:hover {cursor: default;}
 }

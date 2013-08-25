@@ -12,7 +12,7 @@
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
-						<p><strong>author: </strong> <%= @question.author %></p><br>
+						<p class="author"><strong>author: </strong> <%= @question.author %></p><br>
 
 						<% if @question.comments.size > 0 %>
 							<div class="comments">
@@ -61,7 +61,7 @@
 							</div>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
-								<p><strong>author: </strong> <%= answer.author %></p>
+								<p class="author"><strong>author: </strong> <%= answer.author %></p>
 
 								<% if answer.comments.size > 0 %>
 									<div class="comments">
