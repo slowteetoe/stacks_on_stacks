@@ -14,8 +14,8 @@ StacksOnStacks::Application.routes.draw do
   get '/faq' => 'pages#faq'
 
   # these should be POST routes once this is working
-  get '/question/:id/upvote' => 'questions#upvote'
-  get '/question/:id/downvote' => 'questions#downvote'
-  get '/question/:id/remove_vote' => 'questions#remove_vote'
+  get '/questions/:id/upvote' => 'questions#upvote'
+  get '/questions/:id/downvote' => 'questions#downvote'
+  get '/questions/:id/remove_vote' => 'questions#remove_vote'
 
 end
