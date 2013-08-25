@@ -2,9 +2,9 @@ StacksOnStacks::Application.routes.draw do
 
   resources :questions do
     resources :answers
-    resources :comments
   end
 
+  resources :comments
   resources :profiles
   devise_for :users
   resources :users

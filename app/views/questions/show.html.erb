@@ -5,34 +5,39 @@
 			<div id="question">
 				<h1><%= @question.title %></h1>
 				<p><%= @question.body %></p>
-				<p><strong>author: </strong> <%= @question.author %></p>
+				<p><strong>author: </strong> <%= @question.author %></p><br>
 
 				<% if @question.comments.size > 0 %>
-					<br>
-					<% for comment in @question.comments %>
-						<div class="comment">
-							<p><%= comment.body %> - <%= comment.author %></p>
-						</div>
-					<% end %>
+					<div class="comments">
+						<% for comment in @question.comments %>
+							<div class="comment">
+								<p><%= comment.body %> - <%= comment.author %></p>
+							</div>
+						<% end %>
+					</div>
 				<% end %>
 
-				<%= form_for [@question, Comment.new] do |f| %>
-					<div class="form-group">
-						<div>
-							<%= f.text_area :body, class: "form-control" %>
-							<%= f.hidden_field :parent, value: "question" %>
+				<div><span id="qc-btn" onclick="$('#qc-form').toggle();">Add a Comment</span></div>
+
+				<div id="qc-form">
+					<%= form_tag "/comments", method: :post do |f| %>
+						<div class="form-group">
+							<div>
+								<textarea id="body" name="body" class="form-control"></textarea>
+								<input id="q_id" name="q_id" type="hidden" value="<%= @question.id %>">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="action">
-							<%= f.submit "Submit Comment", class: "btn btn-default" %>
+						<div class="form-group">
+							<div class="action">
+								<button type='submit' class='btn btn-default'>Submit Comment</button>
+							</div>
 						</div>
-					</div>
-				<% end %>
+					<% end %>
+				</div>
 			</div>
 
 			<% if @question.answers.size > 0 %>
-				<h3 id="answers">Answers</h3>
+				<h3 class="answers">Answers</h3>
 				<% for answer in @question.answers %>
 					<div class="answer">
 						<p><%= answer.body %></p>

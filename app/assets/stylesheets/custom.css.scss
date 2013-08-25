@@ -19,7 +19,11 @@ h1 {margin-bottom: 40px;}
 
 #qshow {
 	#question {margin-bottom: 40px;}
-	#answers {border-bottom: 1px solid #ddd; padding-bottom: 10px;}
-	.answer {border-bottom: 1px solid #ddd; margin-bottom: 10px;}
-	.comment {border-top: 1px dashed #ddd; margin-bottom: 10px; padding-top: 10px;}
+	.answers {border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+	.answer {border-bottom: 1px solid #ccc; margin-bottom: 10px;}
+	.comments {border-bottom: 1px dashed #ddd;}
+	.comment  {border-top: 1px dashed #ddd; margin-bottom: 10px; padding-top: 10px;}
+	#qc-btn {color: #428BCA; display: inline-block; width: 105px; height: 40px; line-height: 40px;}
+	#qc-btn:hover {color: #2A6496; cursor: pointer;}
+	#qc-form {display: none;}
 }
