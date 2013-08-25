@@ -4,11 +4,22 @@
 
 			<div id="question">
 				<div class="row">
-					<div id="qvote" class="col-xs-2">
-						<span id="downvote-question" class="glyphicon glyphicon-chevron-up"></span><br>
-						<span class="vcount"><%= @question.vote_count %></span><br>
-						<span id="upvote-question" class="glyphicon glyphicon-chevron-down"></span>
-					</div>
+					<% if user_signed_in? %>
+						<div id="qvote" class="col-xs-2">
+							<span id="downvote-question" class="glyphicon glyphicon-chevron-up"></span><br>
+							<span class="vcount"><%= @question.vote_count %></span><br>
+							<span id="upvote-question" class="glyphicon glyphicon-chevron-down"></span><br>
+							<% if @question.voted current_user.username %>
+								<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: @question %>
+							<% end %>
+						</div>
+					<% else %>
+						<div id="qvote" class="col-xs-2">
+							<span class="disabled glyphicon glyphicon-chevron-up"></span><br>
+							<span class="vcount"><%= @question.vote_count %></span><br>
+							<span class="disabled glyphicon glyphicon-chevron-down"></span>
+						</div>
+					<% end %>
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
@@ -54,11 +65,22 @@
 				<% for answer in @question.answers %>
 					<div class="answer">
 						<div class="row">
-							<div class="col-xs-2 avote">
-								<span class="glyphicon glyphicon-chevron-up"></span><br>
-								<span class="vcount">2</span><br>
-								<span class="glyphicon glyphicon-chevron-down"></span>
-							</div>
+							<% if user_signed_in? %>
+								<div class="col-xs-2 avote">
+									<span id="upvote-answer" class="glyphicon glyphicon-chevron-up"></span><br>
+									<span class="vcount"><%#= answer.vote_count %>0</span><br>
+									<span id="downvote-answer" class="glyphicon glyphicon-chevron-down"></span><br>
+									<% if @question.voted current_user.username %>
+										<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
+									<% end %>
+								</div>
+							<% else %>
+								<div class="col-xs-2 avote">
+									<span class="disabled glyphicon glyphicon-chevron-up"></span><br>
+									<span class="vcount"><%#= answer.vote_count %>0</span><br>
+									<span class="disabled glyphicon glyphicon-chevron-down"></span>
+								</div>
+							<% end %>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
 								<p class="author"><strong>author: </strong> <%= answer.author %></p>
