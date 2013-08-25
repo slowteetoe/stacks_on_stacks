@@ -30,6 +30,14 @@ class Question
       indexes :comments
       indexes :author, index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
+
+      indexes :answers do
+        indexes :body, analyzer: :snowball
+      end
+
+      indexes :comments do
+        indexes :body, analyzer: :snowball
+      end
     end
   end
 
