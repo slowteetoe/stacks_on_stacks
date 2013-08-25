@@ -3,10 +3,23 @@
 		<div class="col-xs-12">
 
 			<div id="question">
-				<h1><%= @question.title %></h1>
+				<h1>
+					<% if current_user %>
+						<span class="glyphicon glyphicon-arrow-down" id="downvote-question"></span><%= @question.vote_count %><span class="glyphicon glyphicon-arrow-up" id="upvote-question"></span>
+						<% if @question.voted current_user.username %>
+							<font size="-1"><br />
+							<%= link_to "Remove my vote", controller: "questions", action: "remove_vote", id: @question %>
+							</font>
+						<% end %>
+					<% else %>
+						<span class="glyphicon glyphicon-chevron-down"></span><%= @question.vote_count %><span class="glyphicon glyphicon-chevron-up"></span>
+					<% end %>
+					<%= @question.title %>
+				</h1>
+
 				<p><%= fix_code_tags @question.body %></p>
 				<p><strong>author: </strong> <%= @question.author %></p><br>
-
+				<p><strong><%= @question.voter_count %><span class="glyphicon glyphicon-stats" id="downvote-question"></span></strong></p><br>
 				<% if @question.comments.size > 0 %>
 					<div class="comments">
 						<% for comment in @question.comments %>
