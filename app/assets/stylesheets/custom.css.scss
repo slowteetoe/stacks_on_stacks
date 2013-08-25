@@ -18,12 +18,13 @@ h1 {margin-bottom: 40px;}
 ////////////////////////////////////////////////////////////
 
 #qshow {
+	#yours {margin-top: -10px;}
 	#question {margin-bottom: 40px;}
-	.answers {border-bottom: 1px solid #ccc; padding-bottom: 10px;}
-	.answer {border-bottom: 1px solid #ccc; margin-bottom: 10px;}
+	.answers {padding-bottom: 10px; margin-top: -10px;}
+	.answer {border-top: 1px solid #ccc; margin-bottom: 10px; padding: 10px 0px 30px;}
 	.comments {border-bottom: 1px dashed #ddd;}
 	.comment  {border-top: 1px dashed #ddd; margin-bottom: 10px; padding-top: 10px;}
-	#qc-btn {color: #428BCA; display: inline-block; width: 105px; height: 40px; line-height: 40px;}
-	#qc-btn:hover {color: #2A6496; cursor: pointer;}
-	#qc-form {display: none;}
+	.addcmnt {color: #428BCA; display: inline-block; width: 105px; height: 40px; line-height: 40px;}
+	.addcmnt:hover {color: #2A6496; cursor: pointer;}
+	.cmntform {display: none;}
 }

@@ -2,13 +2,17 @@ class CommentsController < ApplicationController
 
   def create
   	if user_signed_in?
-	  	if !!params[:q_id]
-				@question = Question.find(params[:q_id])
-				@question.comments << build_comment
-				@question.save!
-				redirect_to @question, notice: "Comment submitted!" 
-			elsif !!params[:a_id]
-				# do stuff
+  		question = Question.find(params[:q_id])
+
+	  	if comment_on_question?	
+				question.comments << build_comment
+				question.save!
+				redirect_to question, notice: "Comment submitted!" 
+			elsif comment_on_answer?
+				answer = question.answers.where(id: params[:a_id]).first
+				answer.comments << build_comment
+				answer.save!
+				redirect_to question, notice: "Comment submitted!" 
 			else
 				redirect_to '/', notice: "Not so much." 
 			end
@@ -25,6 +29,14 @@ class CommentsController < ApplicationController
 
   def build_comment
   	Comment.new(body: params[:body], author: current_user.username)
+  end
+
+  def comment_on_question?
+  	!!params[:q_id] && !params[:a_id]
+  end
+
+  def comment_on_answer?
+  	!!params[:a_id]
   end
 
 end
