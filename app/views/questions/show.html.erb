@@ -4,7 +4,7 @@
 
 			<div id="question">
 				<h1><%= @question.title %></h1>
-				<p><%= @question.body %></p>
+				<p><%= fix_code_tags @question.body %></p>
 				<p><strong>author: </strong> <%= @question.author %></p><br>
 
 				<% if @question.comments.size > 0 %>
