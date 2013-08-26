@@ -5,17 +5,11 @@
 			<div id="question">
 				<div class="row">
 					<div id="qvote" class="col-xs-2">
-						<% if user_signed_in? %>
-							<span id="downvote-question" class="glyphicon glyphicon-chevron-up"></span><br>
-							<span class="vcount"><%= @question.vote_count %></span><br>
-							<span id="upvote-question" class="glyphicon glyphicon-chevron-down"></span><br>
-							<% if @question.voted current_user.username %>
-								<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: @question %>
-							<% end %>
-						<% else %>
-							<span class="disabled glyphicon glyphicon-chevron-up"></span><br>
-							<span class="vcount"><%= @question.vote_count %></span><br>
-							<span class="disabled glyphicon glyphicon-chevron-down"></span>
+						<span id="downvote-question" class="glyphicon glyphicon-chevron-up"></span><br>
+						<span class="vcount"><%= @question.vote_count %></span><br>
+						<span id="upvote-question" class="glyphicon glyphicon-chevron-down"></span><br>
+						<% if @question.voted current_user.username %>
+							<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: @question %>
 						<% end %>
 					</div>
 					<div id="qbody" class="col-xs-10">
@@ -64,17 +58,11 @@
 					<div class="answer">
 						<div class="row">
 							<div class="col-xs-2 avote">
-								<% if user_signed_in? %>
-									<span id="upvote-answer" class="glyphicon glyphicon-chevron-up"></span><br>
-									<span class="vcount"><%#= answer.vote_count %>0</span><br>
-									<span id="downvote-answer" class="glyphicon glyphicon-chevron-down"></span><br>
-									<% if @question.voted current_user.username %>
-										<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
-									<% end %>
-								<% else %>
-									<span class="disabled glyphicon glyphicon-chevron-up"></span><br>
-									<span class="vcount"><%#= answer.vote_count %>0</span><br>
-									<span class="disabled glyphicon glyphicon-chevron-down"></span>
+								<span id="upvote-answer" class="glyphicon glyphicon-chevron-up"></span><br>
+								<span class="vcount"><%#= answer.vote_count %>0</span><br>
+								<span id="downvote-answer" class="glyphicon glyphicon-chevron-down"></span><br>
+								<% if @question.voted current_user.username %>
+									<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
 								<% end %>
 							</div>
 							<div class="col-xs-10 abody">
