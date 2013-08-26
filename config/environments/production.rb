@@ -80,7 +80,8 @@ StacksOnStacks::Application.configure do
 
   # Add the fonts path
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  config.assets.paths << Rails.root.join('app', 'assets', 'media')
 
   # Precompile additional assets
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.assets.precompile += %w( .svg .eot .woff .ttf .mp4)
 end
