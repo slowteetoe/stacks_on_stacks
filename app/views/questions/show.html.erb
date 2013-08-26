@@ -60,9 +60,9 @@
 					<div class="answer">
 						<div class="row">
 							<div class="col-xs-2 avote">
-								<span id="upvote-answer" ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-up"></span><br>
+								<span ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-up upvote-answer"></span><br>
 								<span class="vcount"><%= answer.vote_count %></span><br>
-								<span id="downvote-answer" ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-down"></span><br>
+								<span ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-down downvote-answer"></span><br>
 								<% if answer.voted current_user.username %>
 									<%= link_to "un-vote", controller: "answers", action: "remove_vote", id: answer %>
 								<% end %>
@@ -137,13 +137,13 @@
     	window.location.reload(true);
 		});
 	});
-  $("#upvote-answer").click(function(event) {
+  $(".upvote-answer").click(function(event) {
   	var answerId = $(event.target).attr("ref-id");
 		$.post('/answers/' + answerId + '/upvote',  function(data) {
     	window.location.reload(true);
 		});
 	});
-	$("#downvote-answer").click(function(event) {
+	$(".downvote-answer").click(function(event) {
   	var answerId = $(event.target).attr("ref-id");
 		$.post('/answers/' + answerId + '/downvote',  function(data) {
     	window.location.reload(true);
