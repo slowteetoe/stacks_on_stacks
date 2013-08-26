@@ -60,11 +60,11 @@
 					<div class="answer">
 						<div class="row">
 							<div class="col-xs-2 avote">
-								<span id="upvote-answer" class="glyphicon glyphicon-chevron-up"></span><br>
-								<span class="vcount"><%#= answer.vote_count %>0</span><br>
-								<span id="downvote-answer" class="glyphicon glyphicon-chevron-down"></span><br>
-								<% if @question.voted current_user.username %>
-									<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
+								<span id="upvote-answer" ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-up"></span><br>
+								<span class="vcount"><%= answer.vote_count %></span><br>
+								<span id="downvote-answer" ref-id="<%= answer.id %>" class="glyphicon glyphicon-chevron-down"></span><br>
+								<% if answer.voted current_user.username %>
+									<%= link_to "un-vote", controller: "answers", action: "remove_vote", id: answer %>
 								<% end %>
 							</div>
 							<div class="col-xs-10 abody">
@@ -134,6 +134,18 @@
 	});
   $("#upvote-question").click(function() {
 		$.post('/questions/<%= @question.id %>/upvote',  function(data) {
+    	window.location.reload(true);
+		});
+	});
+  $("#upvote-answer").click(function(event) {
+  	var answerId = $(event.target).attr("ref-id");
+		$.post('/answers/' + answerId + '/upvote',  function(data) {
+    	window.location.reload(true);
+		});
+	});
+	$("#downvote-answer").click(function(event) {
+  	var answerId = $(event.target).attr("ref-id");
+		$.post('/answers/' + answerId + '/downvote',  function(data) {
     	window.location.reload(true);
 		});
 	});
