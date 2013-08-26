@@ -63,9 +63,9 @@
 								<span id="upvote-answer" class="glyphicon glyphicon-chevron-up"></span><br>
 								<span class="vcount"><%#= answer.vote_count %>0</span><br>
 								<span id="downvote-answer" class="glyphicon glyphicon-chevron-down"></span><br>
-								<% if @question.voted current_user.username %>
-									<%= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
-								<% end %>
+								<%# if answer.voted current_user.username %>
+									<%#= link_to "un-vote", controller: "questions", action: "remove_vote", id: answer %>
+								<%# end %>
 							</div>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
