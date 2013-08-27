@@ -4,14 +4,10 @@ StacksOnStacks::Application.routes.draw do
     resources :answers
   end
 
-  resources :comments
-  resources :profiles
   devise_for :users
-  resources :users
-  
-  get '/search' => 'search#index'
-  root :to => 'questions#index'
-  get '/faq' => 'pages#faq'
+  resources :users, only: [:index, :show]
+  resources :profiles, only: [:edit, :update]
+  resources :comments
 
   post '/questions/:id/upvote' => 'questions#upvote'
   post '/questions/:id/downvote' => 'questions#downvote'
@@ -20,4 +16,9 @@ StacksOnStacks::Application.routes.draw do
   post '/answers/:id/upvote' => 'answers#upvote'
   post '/answers/:id/downvote' => 'answers#downvote'
   get '/answers/:id/remove_vote' => 'answers#remove_vote'
+
+  get '/search' => 'search#index'
+  root :to => 'questions#index'
+  get '/faq' => 'pages#faq'
+
 end

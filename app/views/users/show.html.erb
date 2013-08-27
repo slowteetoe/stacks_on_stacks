@@ -2,17 +2,16 @@
   <div class="row">
   	<div class="col-xs-12">
   		<h1><%= image_tag @user.profile.gravatar_url(:default => "identicon", :secure => true) %>
-        <% if !@user.profile.display_name.blank? %>
-          <%= @user.profile.display_name %>(<%= @user.username %>)
-        <% else %>
-          <%= @user.username %>
-        <% end %>
-        <br />
-       </h1>
-        <% if @user.profile.tagline && !@user.profile.tagline.empty? %>
-          <blockquote><%= @user.profile.tagline %></blockquote>
-        <% end %>
-        <h3><span>reputation: <%= @user.profile.reputation %><%= image_tag "gold_icon.png", :height=>30, :width=>30 %></span></h3>
+      <% if !@user.profile.display_name.blank? %>
+        <%= @user.profile.display_name %>(<%= @user.username %>)
+      <% else %>
+        <%= @user.username %>
+      <% end %>
+     </h1><br>
+      <% if @user.profile.tagline && !@user.profile.tagline.empty? %>
+        <blockquote><%= @user.profile.tagline %></blockquote>
+      <% end %>
+      <h3><span>reputation: <%= @user.profile.reputation %><%= image_tag "gold_icon.png", :height=>30, :width=>30 %></span></h3>
   	</div>
     <% if @user == current_user %>
     <div class="col-xs-12">
