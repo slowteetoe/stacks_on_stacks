@@ -1,22 +1,19 @@
 class CommentsController < ApplicationController
 
-	def create
-		if user_signed_in?
-			question = Question.find(params[:q_id])
+	before_action :authenticate_user!, only: [:create]
 
-			if comment_on_question?	
-				question.comments << build_comment
-				question.save!
-				redirect_to question, notice: "Comment submitted!" 
-			elsif comment_on_answer?
-				answer = question.answers.where(id: params[:a_id]).first
-				answer.comments << build_comment
-				answer.save!
-				redirect_to question, notice: "Comment submitted!" 
-			end
-		else
-			redirect_to '/users/sign_in', alert: "You need to sign in or sign up before continuing."
+	def create
+		question = Question.find(params[:q_id])
+
+		if comment_on_question?
+			question.comments << build_comment
+			question.save!
+		elsif comment_on_answer?
+			answer = question.answers.where(id: params[:a_id]).first
+			answer.comments << build_comment
+			answer.save!
 		end
+		redirect_to question, notice: "Comment submitted!"
 	end
 
 	private

@@ -3,7 +3,6 @@ class User
   include Mongoid::Timestamps
 
   has_many :questions
-
   has_one :profile, autosave: true, autobuild: true
 
   validates_presence_of :username

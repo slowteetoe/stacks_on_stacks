@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:display_name, :gravatar_email, :tagline, :reputation)
+    params.require(:profile).permit(:display_name, :gravatar_email, :tagline)
   end
 
 end

@@ -40,4 +40,5 @@ class Answer
     upvotes.delete username
     downvotes << username
   end
+
 end

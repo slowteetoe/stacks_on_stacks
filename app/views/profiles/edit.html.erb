@@ -1,50 +1,42 @@
-<h1>Editing profile</h1>
+<div id="profile" class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
 
-<%= form_for @profile, :html => { :class => "form-horizontal", :role => "form" } do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <h1>Edit Your Profile</h1>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <%= form_for @profile do |f| %>
+        <% @profile.errors.each do |attr, msg| %>
+          <p><%= msg %></p>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :display_name, "Display Name", class: "control-label" %>
+          <div>
+            <%= f.text_field :display_name, :autofocus => true, placeholder: "display this instead of your Amazon username...", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :tagline, class: "control-label" %>
+          <div>
+            <%= f.text_field :tagline, placeholder: "some words to live by...", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :gravatar_email, "Gravatar Email Address", class: "control-label" %>
+          <div>
+            <%= f.text_field :gravatar_email, placeholder: "the email you have registered with Gravatar...", class: "form-control" %>
+            <span class="help-block"><a href="http://www.gravatar.com" target="_blank">Gravatar</a> is a cool service that lets you use a globally recognized avatar.</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="action">
+            <%= f.submit "Update", class: "btn btn-default" %>
+          </div>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field" class="form-group">
-    <%= f.label :display_name, class: "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.text_field :display_name, class: "form-control" %><br />
     </div>
   </div>
-
-  <div class="field" class="form-group">
-    <%= f.label :gravatar_email_address, class: "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.text_field :gravatar_email, class: "form-control" %>
-      <span class="help-block"><a href="http://www.gravatar.com" target="_blank">Gravatar</a> is a cool service that lets you use a globally recognized avatar.  Enter the full email address you have registered with Gravatar.</span><br />
-    </div>
-  </div>
-  
-  <div class="field" class="form-group">
-    <%= f.label :tagline, class: "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.text_field :tagline, class: "form-control" %><br />
-    </div>
-  </div>
-  
-  <div class="field" class="form-group">
-    <%= f.label :reputation, :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.text_field :reputation, :disabled => :true %><br /><br/>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit 'Update', class: "btn btn-default" %>
-    </div>
-  </div>
-<% end %>
+</div>

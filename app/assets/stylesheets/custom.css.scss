@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 
 body {padding-top: 51px;}
-#home, #signin, #signup, #signedit, #reset, #faq, #usershow, #userindex, #qnew, #qindex, #qshow, #results {padding-top: 60px; padding-bottom: 100px;}
+#home, #signin, #signup, #signedit, #reset, #faq, #usershow, #userindex, #qnew, #qindex, #qshow, #results, #profile {padding-top: 60px; padding-bottom: 100px;}
 .navbar, .alert {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {color: #111;}
 .navbar-default .navbar-nav > li > a.nav-btn {padding-top: 8px; padding-bottom: 8px;}
@@ -22,6 +22,7 @@ h1 {margin-bottom: 40px;}
 	#qvote {padding-top: 20px;}
 	#qvote, .avote {text-align: center;}
 	#qvote a, .avote a {margin-top: 20px; display: inline-block;}
+	#qvote a:hover, .avote a:hover {text-decoration: none;}
 	#qbody, #yours {padding-left: 0px; padding-right: 15px;}
 	#answers {padding: 0px 15px 10px 0px;}
 	#answers h3, #yours h3 {margin-top: -10px;}

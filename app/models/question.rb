@@ -1,6 +1,8 @@
 class Question
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 
   belongs_to :user
   embeds_many :answers
@@ -10,10 +12,8 @@ class Question
   field :title, type: String
   field :author, type: String
 
-  # Make this model searchable via elasticsearch
-  include Tire::Model::Search
-  include Tire::Model::Callbacks
 
+  # Make this model searchable via elasticsearch
   index_name "stacks-on-stacks-#{Rails.env}"
 
   settings :analysis =>{
