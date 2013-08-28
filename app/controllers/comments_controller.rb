@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
 
 		if comment_on_question?
 			question.comments << build_comment
-			question.save!
 		elsif comment_on_answer?
 			answer = question.answers.where(id: params[:a_id]).first
 			answer.comments << build_comment
 			answer.save!
 		end
+		question.save!
 		redirect_to question, notice: "Comment submitted!"
 	end
 
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 	end
 
 	def build_comment
-		Comment.new(body: params[:body], author: current_user.username)
+		Comment.new(body: params[:body], username: current_user.username)
 	end
 
 	def comment_on_question?

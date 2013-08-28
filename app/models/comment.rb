@@ -6,6 +6,6 @@ class Comment
   embedded_in :answer
 
   field :body, type: String
-  field :author, type: String
+  field :username, type: String
 
 end

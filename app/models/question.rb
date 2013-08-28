@@ -4,13 +4,15 @@ class Question
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
+  before_save :build_usernames_array
+
   belongs_to :user
   embeds_many :answers
   embeds_many :comments
 
   field :body, type: String
   field :title, type: String
-  field :author, type: String
+  field :usernames, type: Array, default: []
 
 
   # Make this model searchable via elasticsearch
@@ -28,7 +30,6 @@ class Question
       indexes :title, analyzer: :snowball, boost: 100
       indexes :answers
       indexes :comments
-      indexes :author, index: :not_analyzed
       indexes :created_at, type: 'date', index: :not_analyzed
 
       indexes :answers do
@@ -39,6 +40,10 @@ class Question
         indexes :body, analyzer: :snowball
       end
     end
+  end
+
+  def build_authors_hash
+    # do stuff
   end
 
   # This should all get extracted into a module
@@ -74,4 +79,54 @@ class Question
     downvotes << username
   end
 
+  private
+
+  def build_usernames_array
+    usernames = self.usernames
+    usernames << self.user.username
+
+    if self.comments.size > 0
+      for comment in self.comments
+        usernames << comment.username
+      end
+    end 
+
+    if self.answers.size > 0
+      for answer in self.answers
+        usernames << answer.username
+
+        if answer.comments.size > 0
+          for comment in answer.comments
+            usernames << comment.username
+          end
+        end
+      end
+    end
+
+    self.usernames = usernames.uniq
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

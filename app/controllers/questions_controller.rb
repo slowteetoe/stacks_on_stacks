@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # @authors = @question.build_authors_hash
   end
 
   def new
@@ -19,7 +20,6 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.author = current_user.username
     @question.user = current_user
 
     if @question.save
