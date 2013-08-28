@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    # @authors = @question.build_authors_hash
+    @authors = @question.build_authors_hash
   end
 
   def new
