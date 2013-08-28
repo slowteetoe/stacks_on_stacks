@@ -6,7 +6,7 @@ class Answer
   embeds_many :comments
 
   field :body, type: String
-  field :username, type: String
+  field :author, type: String
 
   # This should all get extracted into a module
   field :upvotes, type: Array, default: []

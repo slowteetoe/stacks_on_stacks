@@ -12,6 +12,7 @@ class Question
 
   field :body, type: String
   field :title, type: String
+  field :author, type: String
   field :usernames, type: Array, default: []
 
 
@@ -84,21 +85,21 @@ class Question
 
   def build_usernames_array
     usernames = self.usernames
-    usernames << self.user.username
+    usernames << self.author
 
     if self.comments.size > 0
       for comment in self.comments
-        usernames << comment.username
+        usernames << comment.author
       end
     end 
 
     if self.answers.size > 0
       for answer in self.answers
-        usernames << answer.username
+        usernames << answer.author
 
         if answer.comments.size > 0
           for comment in answer.comments
-            usernames << comment.username
+            usernames << comment.author
           end
         end
       end
@@ -108,26 +109,3 @@ class Question
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

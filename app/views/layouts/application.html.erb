@@ -70,15 +70,5 @@
 
 <%= yield %>
 
-	<video width="2" height="2" controls id="sos">
-	  <source src="/assets/sos.mp4" type="video/mp4">
-	</video>
-
-	<script>
-		$(document).bind('keyup', function (evt) {
-		    if (evt.keyCode == 191)
-		     $('#sos').get(0).play()
-		});
-	</script>
 </body>
 </html>

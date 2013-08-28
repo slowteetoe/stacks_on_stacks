@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 	end
 
 	def build_comment
-		Comment.new(body: params[:body], username: current_user.username)
+		Comment.new(body: params[:body], author: current_user.username)
 	end
 
 	def comment_on_question?

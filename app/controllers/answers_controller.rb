@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
 
   def create
     question = Question.find(params[:question_id])
-    question.answers << Answer.new(body: params[:answer][:body], username: current_user.username)
+    question.answers << Answer.new(body: params[:answer][:body], author: current_user.username)
     question.save!
     redirect_to question, notice: "Answer submitted!"
   end

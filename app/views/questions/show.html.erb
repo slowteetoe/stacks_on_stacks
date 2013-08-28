@@ -17,13 +17,13 @@
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
-						<p class="author"><strong>author: </strong> <%#= @question.author %></p><br>
+						<p class="author"><strong>author: </strong> <%= @authors[@question.author].name %></p><br>
 
 						<% if @question.comments.size > 0 %>
 							<div class="comments">
 								<% for comment in @question.comments %>
 									<div class="comment">
-										<p><%= fix_code_tags comment.body %> - <%#= comment.author %></p>
+										<p><%= fix_code_tags comment.body %> - <%= @authors[comment.author].name %></p>
 									</div>
 								<% end %>
 							</div>
@@ -69,13 +69,13 @@
 							</div>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
-								<p class="author"><strong>author: </strong> <%#= answer.author %></p>
+								<p class="author"><strong>author: </strong> <%= @authors[answer.author].name %></p>
 
 								<% if answer.comments.size > 0 %>
 									<div class="comments">
 										<% for comment in answer.comments %>
 											<div class="comment">
-												<p><%= fix_code_tags comment.body %> - <%#= comment.author %></p>
+												<p><%= fix_code_tags comment.body %> - <%= @authors[comment.author].name %></p>
 											</div>
 										<% end %>
 									</div>
