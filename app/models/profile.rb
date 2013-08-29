@@ -3,7 +3,6 @@ class Profile
   include Gravtastic
 
   is_gravtastic!
-
   gravtastic :gravatar_email
 
   belongs_to :user
@@ -11,4 +10,5 @@ class Profile
   field :gravatar_email, type: String
   field :tagline, type: String
   field :reputation, type: Integer, :default => 0
+
 end

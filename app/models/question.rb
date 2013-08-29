@@ -45,7 +45,7 @@ class Question
 
   def build_authors_hash
     users = User.in(username: self.usernames)
-    Hash[users.map { |user| [user.username, user] }]
+    Hash[users.map { |user| [user.username, user.profile] }]
   end
 
   # This should all get extracted into a module

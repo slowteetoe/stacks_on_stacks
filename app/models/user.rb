@@ -8,10 +8,6 @@ class User
   validates_presence_of :username
   validates_uniqueness_of :username
 
-  def name
-    !!self.profile.display_name ? self.profile.display_name : self.username
-  end
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
