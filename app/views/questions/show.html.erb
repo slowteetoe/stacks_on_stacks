@@ -17,13 +17,13 @@
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
-						<p class="author"><strong>author: </strong> <%= name(@question.author, @authors[@question.author]) %></p><br>
+						<p class="author"><strong>author: </strong> <%= author_link(@question.author, @profiles[@question.author]) %></p><br>
 
 						<% if @question.comments.size > 0 %>
 							<div class="comments">
 								<% for comment in @question.comments %>
 									<div class="comment">
-										<p><%= fix_code_tags comment.body %> - <%= name(comment.author, @authors[comment.author]) %></p>
+										<p><%= fix_code_tags comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
 									</div>
 								<% end %>
 							</div>
@@ -69,13 +69,13 @@
 							</div>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
-								<p class="author"><strong>author: </strong> <%= name(answer.author, @authors[answer.author]) %></p>
+								<p class="author"><strong>author: </strong> <%= author_link(answer.author, @profiles[answer.author]) %></p>
 
 								<% if answer.comments.size > 0 %>
 									<div class="comments">
 										<% for comment in answer.comments %>
 											<div class="comment">
-												<p><%= fix_code_tags comment.body %> - <%= name(comment.author, @authors[comment.author]) %></p>
+												<p><%= fix_code_tags comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
 											</div>
 										<% end %>
 									</div>

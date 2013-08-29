@@ -43,7 +43,7 @@ class Question
     end
   end
 
-  def build_authors_hash
+  def referenced_profiles
     users = User.in(username: self.usernames)
     Hash[users.map { |user| [user.username, user.profile] }]
   end

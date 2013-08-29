@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @authors = @question.build_authors_hash
+    @profiles = @question.referenced_profiles
   end
 
   def new
