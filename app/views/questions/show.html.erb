@@ -17,7 +17,11 @@
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
-						<p class="author"><strong>author: </strong> <%= author_link(@question.author, @profiles[@question.author]) %></p><br>
+						<div class="author">
+							<span class="timestamp">asked <%= @question.created_at.strftime("%b %d '%y at %-H:%M") %></span>
+							<span class="picture"><%= image_tag @profiles[@question.author].gravatar_url(default: "identicon", secure: true) %></span>
+							<span class="name"><%= author_link(@question.author, @profiles[@question.author]) %></span>
+						</div>
 
 						<% if @question.comments.size > 0 %>
 							<div class="comments">
@@ -69,8 +73,12 @@
 							</div>
 							<div class="col-xs-10 abody">
 								<p><%= fix_code_tags answer.body %></p>
-								<p class="author"><strong>author: </strong> <%= author_link(answer.author, @profiles[answer.author]) %></p>
-
+								<div class="author">
+									<span class="timestamp">answered <%= answer.created_at.strftime("%b %d '%y at %-H:%M") %></span>
+									<span class="picture"><%= image_tag @profiles[answer.author].gravatar_url(default: "identicon", secure: true) %></span>
+									<span class="name"><%= author_link(answer.author, @profiles[answer.author]) %></span>
+								</div>
+								
 								<% if answer.comments.size > 0 %>
 									<div class="comments">
 										<% for comment in answer.comments %>

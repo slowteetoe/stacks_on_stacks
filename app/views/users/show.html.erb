@@ -1,19 +1,17 @@
 <div id="usershow" class="container">
   <div class="row">
   	<div class="col-sm-6 col-sm-offset-3">
-  		<h1><%= image_tag @user.profile.gravatar_url(:default => "identicon", :secure => true) %>
-      <% if !@user.profile.display_name.blank? %>
-        <%= @user.profile.display_name %>(<%= @user.username %>)
-      <% else %>
-        <%= @user.username %>
-      <% end %>
-     </h1><br>
-      <% if @user.profile.tagline && !@user.profile.tagline.empty? %>
+      <h1>
+        <%= image_tag @user.profile.gravatar_url(default: "identicon", secure: true) %>
+        <%= profile_name(@user) %>
+      </h1>
+      <% if @user.profile.tagline && @user.profile.tagline.present? %>
         <blockquote><%= @user.profile.tagline %></blockquote>
       <% end %>
-      <h3><span>reputation: <%= @user.profile.reputation %> <%= image_tag "gold_icon.png", :height=>30, :width=>30 %></span></h3>
       <% if @user == current_user %>
-        <%= link_to "Edit your profile", edit_profile_path(@user.profile) %>
+        <div id="editlink">
+          <%= link_to "Edit Your Profile", edit_profile_path(@user.profile) %>
+        </div>
       <% end %>
     </div>
   </div>

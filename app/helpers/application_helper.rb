@@ -11,4 +11,12 @@ module ApplicationHelper
   	return link_to name, "/users/#{author.user_id}"
 	end
 
+	def profile_name(user)
+		if user.profile.display_name.present?
+			user.profile.display_name + ' (' + user.username + ') '
+		else
+			user.username
+		end
+	end
+
 end
