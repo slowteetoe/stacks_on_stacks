@@ -2,15 +2,11 @@
   <div class="row">
     <div class="col-xs-12">
 
-      <h1>Hot and trending...</h1>
+      <h1>All Questions</h1>
 
-      <ul class="list-group">
-        <% @questions.each do |question| %>
-          <li class="list-group-item">
-            <%= link_to question.title, question %>
-          </li>
-        <% end %>
-      </ul>
+      <%= paginate @questions %>
+
+      <%= render 'shared/question_list' %>
 
     </div>
   </div>

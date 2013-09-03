@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :edit, :update, :index]
 
   def index
-    @questions = Question.all
+    @questions = Question.order_by(:created_at.desc).page(params[:page]).per(20)
   end
 
   def show

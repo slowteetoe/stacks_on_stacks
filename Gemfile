@@ -10,6 +10,7 @@ gem 'sass-rails', github: 'rails/sass-rails'
 gem 'devise', github: 'plataformatec/devise'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'therubyracer', platforms: :ruby
+gem 'tire', github: 'karmi/tire'
 gem 'bcrypt-ruby', '~> 3.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bson_ext', '~> 1.8.6'
@@ -17,17 +18,13 @@ gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
 gem 'gravtastic'
 gem 'turbolinks'
+gem 'kaminari'
 gem 'slim'
-gem 'tire', github: 'karmi/tire'
 gem 'puma'
 
-group :doc do
-  gem 'sdoc', require: false
-end
-
-gem 'capistrano', group: :development
 
 group :development do
+  gem 'capistrano'
   gem "better_errors"
   gem "binding_of_caller"
 end
