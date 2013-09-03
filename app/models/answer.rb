@@ -8,6 +8,8 @@ class Answer
   field :body, type: String
   field :author, type: String
 
+  validates_presence_of :body
+
   # This should all get extracted into a module
   field :upvotes, type: Array, default: []
   field :downvotes, type: Array, default: []

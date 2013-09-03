@@ -46,4 +46,8 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
 
+  def name
+    self.profile.display_name.present? ? self.profile.display_name : self.useername
+  end
+
 end

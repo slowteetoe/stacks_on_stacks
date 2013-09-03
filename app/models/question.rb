@@ -15,6 +15,9 @@ class Question
   field :author, type: String
   field :usernames, type: Array, default: []
 
+  validates_presence_of :body
+  validates_presence_of :title
+
 
   # Make this model searchable via elasticsearch
   index_name "stacks-on-stacks-#{Rails.env}"

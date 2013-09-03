@@ -6,9 +6,9 @@ module ApplicationHelper
     html_escape(s).gsub(/\[\/code\]/, CLOSE_CODE_TAG).gsub(/\[code\]/,OPEN_CODE_TAG).html_safe
   end
 
-  def author_link(username, author)
-  	name = !!author.display_name ? author.display_name : username
-  	return link_to name, "/users/#{author.user_id}"
+  def author_link(username, profile)
+  	name = !!profile.display_name ? profile.display_name : username
+  	return link_to name, "/users/#{profile.user_id}"
 	end
 
 	def profile_name(user)

@@ -8,4 +8,6 @@ class Comment
   field :body, type: String
   field :author, type: String
 
+  validates_presence_of :body
+
 end
