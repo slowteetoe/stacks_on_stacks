@@ -20,6 +20,19 @@ body {padding-top: 51px;}
 .alert {text-align: center;}
 li {list-style: none;}
 h1 {margin-bottom: 40px;}
+nav.pagination {
+	.page {border: 1px solid #bbb; display: inline-block; width: 22px; text-align: center;}
+	.page a {display: inline-block; width: 20px; height: 20px;}
+	.page:hover {cursor: pointer; border-color: #777;}
+	.current {background-color: #888; border-color: rgba(0, 0, 0, 0.1); color: #fff;}
+	.current:hover {cursor: default;}
+	.page:hover a {color: #555;}
+	a {color: #888;}
+	a:hover {text-decoration: none;}
+	.next  {margin-left: 3px}
+	.prev  {margin-right: 3px}
+	.prev a:hover, .next a:hover {color: #555;}
+} 
 
 
 ////////////////////////////////////////////////////////////
