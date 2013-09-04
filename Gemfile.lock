@@ -193,6 +193,9 @@ GEM
     method_source (0.8.2)
     mime-types (1.24)
     minitest (4.7.5)
+    mongoid_taggable (1.1.1)
+      mongoid (>= 3)
+      rake
     moped (1.5.1)
     multi_json (1.7.9)
     net-scp (1.1.2)
@@ -272,6 +275,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mongoid!
+  mongoid_taggable
   pry
   puma
   rails!

@@ -1,5 +1,6 @@
 class Question
   include Mongoid::Document
+  include Mongoid::Taggable
   include Mongoid::Timestamps
   include Tire::Model::Search
   include Tire::Model::Callbacks
@@ -17,7 +18,7 @@ class Question
 
   validates_presence_of :body
   validates_presence_of :title
-
+  validates_presence_of :tags
 
   # Make this model searchable via elasticsearch
   index_name "stacks-on-stacks-#{Rails.env}"

@@ -68,6 +68,6 @@ private
   end
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    params.require(:question).permit(:title, :body, :tags)
   end
 end
