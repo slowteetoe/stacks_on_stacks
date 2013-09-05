@@ -1,0 +1,13 @@
+<div id="tags" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+    	<h1>All Tags</h1>
+
+		  <% @tags.each do |t| %>
+		    <span class="btn btn-default btn-lg"><%= t[0] %> &#215; <%= t[1].floor.to_s %></span>
+		  <% end %>
+
+    </div>
+  </div>
+</div>

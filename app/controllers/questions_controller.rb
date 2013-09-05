@@ -11,6 +11,10 @@ class QuestionsController < ApplicationController
     @profiles = @question.referenced_profiles
   end
 
+  def tags
+    @tags = Question.tags_with_weight
+  end
+
   def new
     @question = Question.new
   end

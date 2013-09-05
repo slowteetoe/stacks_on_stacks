@@ -9,6 +9,7 @@ StacksOnStacks::Application.routes.draw do
   resources :profiles, only: [:edit, :update]
   resources :comments
 
+  get 'tags' => 'questions#tags'
   post '/questions/:id/upvote' => 'questions#upvote'
   post '/questions/:id/downvote' => 'questions#downvote'
   get '/questions/:id/remove_vote' => 'questions#remove_vote'
