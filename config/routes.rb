@@ -10,6 +10,8 @@ StacksOnStacks::Application.routes.draw do
   resources :comments
 
   get 'tags' => 'questions#tags'
+  get 'tagged/:tag' => 'questions#tagged'
+
   post '/questions/:id/upvote' => 'questions#upvote'
   post '/questions/:id/downvote' => 'questions#downvote'
   get '/questions/:id/remove_vote' => 'questions#remove_vote'

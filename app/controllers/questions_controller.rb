@@ -15,6 +15,10 @@ class QuestionsController < ApplicationController
     @tags = Question.tags_with_weight
   end
 
+  def tagged
+    @questions = Question.tagged_with(params[:tag]).order_by(:created_at.desc).page(params[:page]).per(20)
+  end
+
   def new
     @question = Question.new
   end

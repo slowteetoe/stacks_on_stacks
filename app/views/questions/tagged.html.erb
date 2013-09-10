@@ -1,0 +1,13 @@
+<div id="tagged" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <h1>Tagged With: <span class="label label-default"><%= params[:tag] %></span></h1>
+
+      <%= render 'shared/question_list' %>
+
+      <%= paginate @questions %>
+
+    </div>
+  </div>
+</div>
