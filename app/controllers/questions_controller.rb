@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   end
 
   def tags
-    @tags = Question.tags_with_weight
+    @tags = Question.tags_with_weight.sort {|a,b| b[1] <=> a[1]}
   end
 
   def tagged

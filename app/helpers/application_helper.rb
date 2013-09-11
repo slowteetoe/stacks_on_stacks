@@ -19,6 +19,11 @@ module ApplicationHelper
 		return link_to name, "/users/#{profile.user_id}"
 	end
 
+	def logged_in_link(username, profile)
+		name = !!profile.display_name ? profile.display_name : username
+		return link_to 'Hi ' + name + '!', "/users/#{profile.user_id}"
+	end
+
 	def profile_name(user)
 		if user.profile.display_name.present?
 			user.profile.display_name + ' (' + user.username + ') '

@@ -20,6 +20,11 @@ body {padding-top: 51px;}
 .alert {text-align: center;}
 li {list-style: none;}
 h1 {margin-bottom: 40px;}
+.title {font-size: 24px;}
+.vcounter, .acounter {text-align: center;}
+.acounter {color: #9A4444;}
+.count-data {font-size: 24px;}
+.count-type {font-size: 12px;}
 nav.pagination {
 	.page {border: 1px solid #bbb; display: inline-block; width: 22px; text-align: center;}
 	.page a {display: inline-block; width: 20px; height: 20px;}
@@ -32,8 +37,7 @@ nav.pagination {
 	.next  {margin-left: 3px}
 	.prev  {margin-right: 3px}
 	.prev a:hover, .next a:hover {color: #555;}
-} 
-
+}
 
 ////////////////////////////////////////////////////////////
 // 							  			  QUESTIONS 	  								  //
