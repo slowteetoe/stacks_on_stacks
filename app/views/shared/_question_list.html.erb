@@ -1,3 +1,17 @@
+<div id="sorting">
+  <%= link_to sort: "votes" do %>
+    <button class="btn btn-default">votes</button>
+  <% end %>
+  <%= link_to sort: "answers" do %>
+    <button class="btn btn-default">answers</button>
+  <% end %>
+  <%= link_to sort: "asked" do %>
+    <button class="btn btn-default">asked</button>
+  <% end %>
+  <%= link_to sort: "author" do %>
+    <button class="btn btn-default">author</button>
+  <% end %>
+</div>
 <ul class="list-group">
   <% @questions.each do |q| %>
     <li class="list-group-item">
@@ -18,7 +32,7 @@
           <span class="title"><%= link_to q.title, q %></span><br>
           <% q.tags.split(',').each do |t| %>
             <%= link_to "/tagged/#{t}", class: "qtag" do %>
-              <span class="btn btn-default btn-xs"><%= t %></span>
+              <button class="btn btn-default btn-xs"><%= t %></button>
             <% end %>
           <% end %>
           <span class="asked">asked <%= q.created_at.strftime("%b %d '%y at %-H:%M") %> by <%= author_link(q.user.username, q.user.profile) %></span>
