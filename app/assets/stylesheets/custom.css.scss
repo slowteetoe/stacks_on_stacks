@@ -20,10 +20,10 @@ body {padding-top: 51px;}
 .alert {text-align: center;}
 li {list-style: none;}
 h1 {margin-bottom: 40px;}
-.title {font-size: 24px;}
+.title {font-size: 20px;}
 .vcounter, .acounter {text-align: center;}
 .acounter {color: #9A4444;}
-.count-data {font-size: 24px;}
+.count-data {font-size: 20px;}
 .count-type {font-size: 12px;}
 a.qtag:hover {text-decoration: none;}
 .asked {float: right;}
@@ -88,6 +88,11 @@ nav.pagination {
 ////////////////////////////////////////////////////////////
 
 #usershow {
+	img {height: 80px; width: 80px;}
 	#editlink {margin-top: 100px;}
+}
+
+#userindex {
+	.userbox img {margin-bottom: 10px; height: 80px; width: 80px;}
 }
 

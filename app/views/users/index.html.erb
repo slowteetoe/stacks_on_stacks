@@ -4,13 +4,18 @@
 
       <h1>All Users</h1>
 
-      <ul class="list-group">
+      <div class="row">
         <% @users.each do |user| %>
-          <li class="list-group-item">
-            <%= user_link(user.username, user.profile) %>
-          </li>
+          <div class="col-sm-6 col-lg-3">
+            <div class="userbox well">
+              <%= image_tag user.profile.gravatar_url(default: "identicon", secure: true) %><br>
+              <%= user_link(user.username, user.profile) %>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      </div>
+
+      <%= paginate @users %>
 
     </div>
   </div>

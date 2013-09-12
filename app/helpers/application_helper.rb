@@ -8,20 +8,20 @@ module ApplicationHelper
 
 	def user_link(username, profile)
 		if !!profile.display_name
-			return link_to "#{profile.display_name} (#{username})", "/users/#{profile.user_id}"
+			link_to "#{profile.display_name} (#{username})", "/users/#{profile.user_id}"
 		else
-			return link_to username, "/users/#{profile.user_id}"
+			link_to username, "/users/#{profile.user_id}"
 		end
 	end
 
 	def author_link(username, profile)
 		name = !!profile.display_name ? profile.display_name : username
-		return link_to name, "/users/#{profile.user_id}"
+		link_to name, "/users/#{profile.user_id}"
 	end
 
 	def logged_in_link(username, profile)
 		name = !!profile.display_name ? profile.display_name : username
-		return link_to 'Hi ' + name + '!', "/users/#{profile.user_id}"
+		link_to 'Hi ' + name + '!', "/users/#{profile.user_id}"
 	end
 
 	def profile_name(user)
