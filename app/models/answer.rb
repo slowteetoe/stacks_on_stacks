@@ -2,7 +2,7 @@ class Answer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :questions
+  embedded_in :questions, counter_cache: true
   embeds_many :comments
 
   field :body, type: String

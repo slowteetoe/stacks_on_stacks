@@ -15,18 +15,21 @@ class Question
   field :title, type: String
   field :author, type: String
   field :usernames, type: Array, default: []
+  field :votes_count, type: Integer, default: 0
+  field :answers_count, type: Integer, default: 0
 
   validates_presence_of :body
   validates_presence_of :title
   validates_presence_of :tags
 
   scope :order, ->(field, dir){
-    if field == :asked || :author
-      srt = field == :asked ? :created_at : field
-      order_by(srt => dir)
-    else
-      nil
+    srt = case field
+    when :votes     then :votes_count
+    when :answers   then :answers_count
+    when :asked     then :created_at
+    when :author    then :author
     end
+    order_by(srt => dir)
   }
 
   # Make this model searchable via elasticsearch
@@ -81,17 +84,24 @@ class Question
     return if upvotes.include? username
     downvotes.delete username
     upvotes << username
+    update_vote_count
   end
 
   def remove_vote(username)
     upvotes.delete username
     downvotes.delete username
+    update_vote_count
   end
 
   def downvote(username)
     return if downvotes.include? username
     upvotes.delete username
     downvotes << username
+    update_vote_count
+  end
+
+  def update_vote_count
+    votes_count = vote_count
   end
 
   private
