@@ -1,14 +1,14 @@
 <div id="sorting">
-  <%= link_to sort: "votes" do %>
+  <%= link_to srt: "votes", dir: direction do %>
     <button class="btn btn-default">votes</button>
   <% end %>
-  <%= link_to sort: "answers" do %>
+  <%= link_to srt: "answers", dir: direction do %>
     <button class="btn btn-default">answers</button>
   <% end %>
-  <%= link_to sort: "asked" do %>
+  <%= link_to srt: "asked", dir: direction do %>
     <button class="btn btn-default">asked</button>
   <% end %>
-  <%= link_to sort: "author" do %>
+  <%= link_to srt: "author", dir: direction do %>
     <button class="btn btn-default">author</button>
   <% end %>
 </div>
@@ -37,6 +37,7 @@
           <% end %>
           <span class="asked">asked <%= q.created_at.strftime("%b %d '%y at %-H:%M") %> by <%= author_link(q.user.username, q.user.profile) %></span>
         </div>
+      </div>
     </li>
   <% end %>
 </ul>

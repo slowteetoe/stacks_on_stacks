@@ -4,7 +4,11 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :edit, :update, :index]
 
   def index
-    @questions = Question.order_by(:created_at.desc).page(params[:page]).per(20)
+    if params[:srt]
+      @questions = Question.order(params[:srt].to_sym, params[:dir].to_sym).page(params[:page]).per(20)
+    else
+      @questions = Question.order(:asked, :desc).page(params[:page]).per(20)
+    end
   end
 
   def show

@@ -20,6 +20,15 @@ class Question
   validates_presence_of :title
   validates_presence_of :tags
 
+  scope :order, ->(field, dir){
+    if field == :asked || :author
+      srt = field == :asked ? :created_at : field
+      order_by(srt => dir)
+    else
+      nil
+    end
+  }
+
   # Make this model searchable via elasticsearch
   index_name "stacks-on-stacks-#{Rails.env}"
 

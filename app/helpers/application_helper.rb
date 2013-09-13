@@ -32,4 +32,12 @@ module ApplicationHelper
 		end
 	end
 
+	def direction
+		case params[:dir]
+			when nil 		then 'desc'
+			when 'asc'	then 'desc'
+			when 'desc'	then 'asc'
+		end
+	end
+
 end
