@@ -7,29 +7,20 @@ module ApplicationHelper
   end
 
 	def user_link(username, profile)
-		if !!profile.display_name
-			link_to "#{profile.display_name} (#{username})", "/users/#{profile.user_id}"
-		else
-			link_to username, "/users/#{profile.user_id}"
-		end
+		link_to display_name_slug(profile.display_name, username), "/users/#{profile.user_id}"
 	end
 
 	def author_link(username, profile)
-		name = !!profile.display_name ? profile.display_name : username
-		link_to name, "/users/#{profile.user_id}"
+		link_to preferred_display_name( profile.display_name, username), "/users/#{profile.user_id}"
 	end
 
 	def logged_in_link(username, profile)
-		name = !!profile.display_name ? profile.display_name : username
-		link_to 'Hi ' + name + '!', "/users/#{profile.user_id}"
+		name = preferred_display_name( profile.display_name, username)
+		link_to "Hi #{name}!", "/users/#{profile.user_id}"
 	end
 
 	def profile_name(user)
-		if user.profile.display_name.present?
-			user.profile.display_name + ' (' + user.username + ') '
-		else
-			user.username
-		end
+		display_name_slug(user.profile.display_name, user.username)
 	end
 
 	def direction
@@ -38,6 +29,18 @@ module ApplicationHelper
 			when 'asc'	then 'desc'
 			when 'desc'	then 'asc'
 		end
+	end
+
+private
+
+	def display_name_slug(display_name, username)
+		return "#{display_name} (#{username})" unless display_name.nil? or display_name.blank?
+		username
+	end
+
+	def preferred_display_name(display_name, username)
+		return display_name unless display_name.nil? or display_name.blank?
+		username
 	end
 
 end

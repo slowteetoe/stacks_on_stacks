@@ -47,7 +47,7 @@ class User
   # field :authentication_token, :type => String
 
   def name
-    self.profile.display_name.present? ? self.profile.display_name : self.useername
+    self.profile.display_name.present? ? self.profile.display_name : self.username
   end
 
 end
