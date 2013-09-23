@@ -4,10 +4,10 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :edit, :update, :index]
 
   def index
-    if params[:srt]
-      @questions = Question.order(params[:srt].to_sym, params[:dir].to_sym).page(params[:page]).per(20)
+    if params[:col]
+      @questions = Question.order_by(params[:col].to_sym => params[:dir]).page(params[:page]).per(20)
     else
-      @questions = Question.order(:asked, :desc).page(params[:page]).per(20)
+      @questions = Question.order_by(created_at: 'desc').page(params[:page]).per(20)
     end
   end
 
@@ -16,11 +16,15 @@ class QuestionsController < ApplicationController
   end
 
   def tags
-    @tags = Question.tags_with_weight.sort {|a,b| b[1] <=> a[1]}
+    @tags = Question.tags_with_weight.sort { |a,b| b[1] <=> a[1] }
   end
 
   def tagged
-    @questions = Question.tagged_with(params[:tag]).order_by(:created_at.desc).page(params[:page]).per(20)
+    if params[:col]
+      @questions = Question.tagged_with(params[:tag]).order_by(params[:col].to_sym => params[:dir]).page(params[:page]).per(20)
+    else
+      @questions = Question.tagged_with(params[:tag]).order_by(created_at: 'desc').page(params[:page]).per(20)
+    end
   end
 
   def new

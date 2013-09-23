@@ -6,6 +6,7 @@ class Question
   include Tire::Model::Callbacks
 
   before_save :build_usernames_array
+  before_update :update_vote_count, if: proc { upvotes_changed? || downvotes_changed? }
 
   belongs_to :user
   embeds_many :answers
@@ -22,16 +23,6 @@ class Question
   validates_presence_of :title
   validates_presence_of :tags
 
-  scope :order, ->(field, dir){
-    srt = case field
-    when :votes     then :votes_count
-    when :answers   then :answers_count
-    when :asked     then :created_at
-    when :author    then :author
-    end
-    order_by(srt => dir)
-  }
-
   # Make this model searchable via elasticsearch
   index_name "stacks-on-stacks-#{Rails.env}"
 
@@ -47,6 +38,8 @@ class Question
       indexes :title, analyzer: :snowball, boost: 100
       indexes :answers
       indexes :comments
+      indexes :votes_count
+      indexes :answers_count
       indexes :created_at, type: 'date', index: :not_analyzed
 
       indexes :answers do
@@ -84,24 +77,21 @@ class Question
     return if upvotes.include? username
     downvotes.delete username
     upvotes << username
-    update_vote_count
   end
 
   def remove_vote(username)
     upvotes.delete username
     downvotes.delete username
-    update_vote_count
   end
 
   def downvote(username)
     return if downvotes.include? username
     upvotes.delete username
     downvotes << username
-    update_vote_count
   end
 
   def update_vote_count
-    votes_count = vote_count
+    self.votes_count = vote_count
   end
 
   private

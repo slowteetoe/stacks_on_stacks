@@ -32,12 +32,8 @@ module ApplicationHelper
 		end
 	end
 
-	def direction
-		case params[:dir]
-			when nil 		then 'desc'
-			when 'asc'	then 'desc'
-			when 'desc'	then 'asc'
-		end
+	def direction(col)
+		params[:dir] && params[:dir] == 'desc' && params[:col] == col ? 'asc' : 'desc'
 	end
 
 end

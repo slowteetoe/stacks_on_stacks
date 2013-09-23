@@ -1,0 +1,14 @@
+<div id="sorting">
+  <%= link_to col: 'votes_count', dir: direction('votes_count') do %>
+    <button class="btn btn-default">votes</button>
+  <% end %>
+  <%= link_to col: 'answers_count', dir: direction('answers_count') do %>
+    <button class="btn btn-default">answers</button>
+  <% end %>
+  <%= link_to col: 'created_at', dir: direction('created_at') do %>
+    <button class="btn btn-default">asked</button>
+  <% end %>
+  <%= link_to col: 'author', dir: direction('author') do %>
+    <button class="btn btn-default">author</button>
+  <% end %>
+</div>

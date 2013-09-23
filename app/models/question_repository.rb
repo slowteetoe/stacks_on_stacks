@@ -10,11 +10,13 @@ class QuestionRepository
 
   def search
     q = params[:query]
+    d = params[:dir] || 'desc'
+    c = params[:col] || 'created_at'
+
     Question.tire.search(load: true, page: params[:page], per_page: posts_per_page) do
       query { string q, default_operator: "OR" } if q.present?
-      sort { by :created_at, "desc" } if q.blank?
+      sort { by "#{c}", "#{d}" }
     end
-
   end
 
 end

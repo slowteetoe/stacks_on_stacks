@@ -4,8 +4,8 @@
 
       <h1 id="qh1">All Questions</h1>
 
+      <%= render 'shared/sorting' %>
       <%= render 'shared/question_list' %>
-
       <%= paginate @questions %>
 
     </div>

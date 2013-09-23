@@ -4,6 +4,21 @@
 
       <h1 id="qh1">Search Results</h1>
 
+      <div id="sorting">
+        <%= link_to query: params[:query], col: 'votes_count', dir: direction('votes_count') do %>
+          <button class="btn btn-default">votes</button>
+        <% end %>
+        <%= link_to query: params[:query], col: 'answers_count', dir: direction('answers_count') do %>
+          <button class="btn btn-default">answers</button>
+        <% end %>
+        <%= link_to query: params[:query], col: 'created_at', dir: direction('created_at') do %>
+          <button class="btn btn-default">asked</button>
+        <% end %>
+        <%= link_to query: params[:query], col: 'author', dir: direction('author') do %>
+          <button class="btn btn-default">author</button>
+        <% end %>
+      </div>
+
       <%= render 'shared/question_list' %>
 
       <%= paginate @questions %>
