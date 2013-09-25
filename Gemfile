@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'gravtastic'
 gem 'turbolinks'
 gem 'kaminari'
+gem 'albeano'
 gem 'slim'
 gem 'puma'
 

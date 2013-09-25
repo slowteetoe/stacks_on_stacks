@@ -100,21 +100,15 @@ class Question
     usernames = self.usernames
     usernames << self.author
 
-    if self.comments.size > 0
-      for comment in self.comments
+    for comment in self.comments
+      usernames << comment.author
+    end
+
+    for answer in self.answers
+      usernames << answer.author
+
+      for comment in answer.comments
         usernames << comment.author
-      end
-    end 
-
-    if self.answers.size > 0
-      for answer in self.answers
-        usernames << answer.author
-
-        if answer.comments.size > 0
-          for comment in answer.comments
-            usernames << comment.author
-          end
-        end
       end
     end
 

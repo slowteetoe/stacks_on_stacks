@@ -19,7 +19,7 @@
 						<p><%= fix_code_tags @question.body %></p>
 						<div class="author">
 							<span class="timestamp">asked <%= @question.created_at.strftime("%b %d '%y at %-H:%M") %></span>
-							<span class="picture"><%= image_tag @profiles[@question.author].gravatar_url(default: "identicon", secure: true) %></span>
+							<span class="picture"><%= image_tag @profiles.fetch(@question.author).gravatar_url(default: "identicon", secure: true) %></span>
 							<span class="name"><%= author_link(@question.author, @profiles[@question.author]) %></span>
 						</div>
 
