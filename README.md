@@ -2,3 +2,7 @@ stacks_on_stacks
 ================
 
 Generic clone of a popular question and answer site
+
+Requires a local installation of:
+mongodb
+elasticsearch
