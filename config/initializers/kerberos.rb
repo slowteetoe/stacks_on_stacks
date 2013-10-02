@@ -1,5 +1,7 @@
 require 'devise/strategies/authenticatable'
- 
+require 'krb5_auth'
+include Krb5Auth
+
 module Devise
   module Strategies
     class KerberosAuthenticatable < Authenticatable

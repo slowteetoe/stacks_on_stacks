@@ -17,6 +17,18 @@
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
 						<p><%= fix_code_tags @question.body %></p>
+						<div id="qbuttons">
+							<% if current_user.username == @question.author %>
+								<%= link_to edit_question_path do %>
+									<%= button_tag 'edit question', class: "btn btn-info btn-sm" %>
+								<% end %>
+							<% end %>
+							<% for tag in @question.tags_array %>
+								<%= link_to "/tagged/#{tag}" do %>
+									<%= button_tag tag, class: "btn btn-default btn-sm" %>
+								<% end %>
+							<% end %>
+						</div>
 						<div class="author">
 							<span class="timestamp">asked <%= @question.created_at.strftime("%b %d '%y at %-H:%M") %></span>
 							<span class="picture"><%= image_tag @profiles.fetch(@question.author).gravatar_url(default: "identicon", secure: true) %></span>
