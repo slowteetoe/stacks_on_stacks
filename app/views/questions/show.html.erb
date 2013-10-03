@@ -16,7 +16,7 @@
 					</div>
 					<div id="qbody" class="col-xs-10">
 						<h1><%= @question.title %></h1>
-						<p><%= fix_code_tags @question.body %></p>
+						<p><%= simple_format fix_code_tags @question.body %></p>
 						<div id="qbuttons">
 							<% if current_user.username == @question.author %>
 								<%= link_to edit_question_path do %>
@@ -39,7 +39,7 @@
 							<div class="comments">
 								<% for comment in @question.comments %>
 									<div class="comment">
-										<p><%= fix_code_tags comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
+										<p><%= comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
 									</div>
 								<% end %>
 							</div>
@@ -84,7 +84,7 @@
 								<% end %>
 							</div>
 							<div class="col-xs-10 abody">
-								<p><%= fix_code_tags answer.body %></p>
+								<p><%= simple_format fix_code_tags answer.body %></p>
 								<div class="author">
 									<span class="timestamp">answered <%= answer.created_at.strftime("%b %d '%y at %-H:%M") %></span>
 									<span class="picture"><%= image_tag @profiles[answer.author].gravatar_url(default: "identicon", secure: true) %></span>
@@ -95,7 +95,7 @@
 									<div class="comments">
 										<% for comment in answer.comments %>
 											<div class="comment">
-												<p><%= fix_code_tags comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
+												<p><%= comment.body %> - <%= author_link(comment.author, @profiles[comment.author]) %></p>
 											</div>
 										<% end %>
 									</div>

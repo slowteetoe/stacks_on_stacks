@@ -9,9 +9,18 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :body, "Details", class: "control-label" %>
+    <%= f.label :body, "Question", class: "control-label" %>
+    <span id="insert-code">insert code tags for: </span>
+    <%= button_to_function "java", "codeTag('java')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "ruby", "codeTag('ruby')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "c++", "codeTag('c++')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "perl", "codeTag('perl')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "python", "codeTag('python')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "javascript", "codeTag('javascript')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "html", "codeTag('html')", class: "btn btn-default btn-xs code-tag" %>
+    <%= button_to_function "css", "codeTag('css')", class: "btn btn-default btn-xs code-tag" %>
     <div>
-      <%= f.text_area :body, rows: 10, class: "form-control" %>
+      <%= f.text_area :body, rows: 10, class: "form-control", id: "description" %>
     </div>
   </div>
   <div class="form-group">
@@ -26,3 +35,5 @@
     </div>
   </div>
 <% end %>
+
+<script>function codeTag(lang){document.getElementById('description').value += "\n[code=" + lang + "]\n\n[/code]";}</script>

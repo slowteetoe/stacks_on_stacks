@@ -1,7 +1,5 @@
 module ApplicationHelper
-  OPEN_CODE_TAG = '<code class="code"><pre>'
-  CLOSE_CODE_TAG = '</pre></code>'
-
+	
   def fix_code_tags(s)
     Albeano.generate(s).html_safe
   end

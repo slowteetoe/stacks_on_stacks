@@ -30,6 +30,9 @@ h1 {margin-bottom: 40px;}
 .count-type {font-size: 12px;}
 a.qtag:hover {text-decoration: none;}
 .asked {float: right;}
+#insert-code {margin-left: 50px;}
+.code-tag {margin-left: 10px; margin-bottom: 3px;}
+label[for='question_body'] {margin-bottom: 7px;}
 nav.pagination {
 	.page {border: 1px solid #bbb; display: inline-block; width: 22px; text-align: center;}
 	.page a {display: inline-block; width: 20px; height: 20px;}
@@ -42,6 +45,10 @@ nav.pagination {
 	.next  {margin-left: 3px}
 	.prev  {margin-right: 3px}
 	.prev a:hover, .next a:hover {color: #555;}
+}
+div.highlight {
+	br, p:empty {display: none;}
+	p {margin: 0;}
 }
 
 ////////////////////////////////////////////////////////////
