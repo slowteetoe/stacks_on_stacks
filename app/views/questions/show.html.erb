@@ -89,8 +89,11 @@
 								</div>
 								<div id="edit<%= answer.id %>" style="display:none;">
 									<%= form_for [@question, answer] do |f| %>
+										<%= f.label :body, "Edit Answer", class: "control-label" %>
+    								<%= render 'shared/edit_code_tags' %>
 										<div class="form-group">
-											<%= f.text_area :body, rows: 8, class: "form-control" %>
+											<%= f.text_area :body, rows: 8, class: "form-control", id: "tags#{answer.id}" %>
+											<script>function editCodeTag(lang){document.getElementById('tags<%= answer.id %>').value += "\n[code=" + lang + "]\n\n[/code]";}</script>
 										</div>
 										<div class="form-group">
 											<%= button_to_function "Cancel Edit", "$('#answer#{answer.id}').toggle();$('#edit#{answer.id}').toggle();$('#edit-answer-btn').toggle()", class: "btn btn-info btn-sm" %>
@@ -144,7 +147,8 @@
 				<div class="row">
 					<div class="col-xs-2"></div>
 					<div id="yours" class="col-xs-10">
-						<h3>Your Answer</h3>
+						<h3 id="your-answer">Your Answer</h3>
+						<%= render 'shared/code_tags' %>
 						<%= form_for [@question, Answer.new] do |f| %>
 							<div class="form-group">
 								<%= f.text_area :body, rows: 8, class: "form-control" %>
@@ -162,6 +166,10 @@
 </div>
 
 <script>
+	function codeTag(lang) {
+		document.getElementById('answer_body').value += "\n[code=" + lang + "]\n\n[/code]";
+	}
+
   $("#downvote-question").click(function() {
 		$.post('/questions/<%= @question.id %>/downvote',  function(data) {
     	window.location.reload(true);
