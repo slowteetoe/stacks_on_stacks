@@ -25,6 +25,12 @@ module ApplicationHelper
 		params[:dir] && params[:dir] == 'desc' && params[:col] == col ? 'asc' : 'desc'
 	end
 
+	def already_answered?(username, question)
+		authors = []
+		question.answers.each { |a| authors << a.author }
+		authors.include?(username)
+	end
+
 private
 
 	def display_name_slug(display_name, username)

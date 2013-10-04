@@ -20,7 +20,7 @@
 						<div id="qbuttons">
 							<% if current_user.username == @question.author %>
 								<%= link_to edit_question_path do %>
-									<%= button_tag 'edit question', class: "btn btn-info btn-sm" %>
+									<%= button_tag 'Edit Question', class: "btn btn-info btn-sm" %>
 								<% end %>
 							<% end %>
 							<% for tag in @question.tags_array %>
@@ -57,7 +57,7 @@
 								</div>
 								<div class="form-group">
 									<div class="action">
-										<button type='submit' class='btn btn-default'>Submit Comment</button>
+										<button type='submit' class='btn btn-default btn-sm'>Submit Comment</button>
 									</div>
 								</div>
 							<% end %>
@@ -84,7 +84,24 @@
 								<% end %>
 							</div>
 							<div class="col-xs-10 abody">
-								<p><%= simple_format fix_code_tags answer.body %></p>
+								<div id="answer<%= answer.id %>">
+									<%= simple_format fix_code_tags answer.body %>
+								</div>
+								<div id="edit<%= answer.id %>" style="display:none;">
+									<%= form_for [@question, answer] do |f| %>
+										<div class="form-group">
+											<%= f.text_area :body, rows: 8, class: "form-control" %>
+										</div>
+										<div class="form-group">
+											<%= button_to_function "Cancel Edit", "$('#answer#{answer.id}').toggle();$('#edit#{answer.id}').toggle();$('#edit-answer-btn').toggle()", class: "btn btn-info btn-sm" %>
+											<%= f.submit "Submit Changes", class: "btn btn-default btn-sm" %>
+										</div>
+									<% end %>
+								</div>
+								<% if current_user.username == answer.author %>
+									<%= button_to_function "Edit Answer", "$('#answer#{answer.id}').toggle();$('#edit#{answer.id}').toggle();$(this).toggle()", class: "btn btn-info btn-sm", id: 'edit-answer-btn' %>
+								<% end %>
+
 								<div class="author">
 									<span class="timestamp">answered <%= answer.created_at.strftime("%b %d '%y at %-H:%M") %></span>
 									<span class="picture"><%= image_tag @profiles[answer.author].gravatar_url(default: "identicon", secure: true) %></span>
@@ -113,7 +130,7 @@
 											</div>
 										</div>
 										<div class="action">
-											<button type='submit' class='btn btn-default'>Submit Comment</button>
+											<button type='submit' class='btn btn-default btn-sm'>Submit Comment</button>
 										</div>
 									<% end %>
 								</div>
@@ -123,25 +140,23 @@
 				<% end %>
 			<% end %>
 
-			<div class="row">
-				<div class="col-xs-2"></div>
-				<div id="yours" class="col-xs-10">
-					<h3>Your Answer</h3>
-
-					<%= form_for [@question, Answer.new] do |f| %>
-						<div class="form-group">
-							<div>
+			<% unless already_answered?(current_user.username, @question) %>
+				<div class="row">
+					<div class="col-xs-2"></div>
+					<div id="yours" class="col-xs-10">
+						<h3>Your Answer</h3>
+						<%= form_for [@question, Answer.new] do |f| %>
+							<div class="form-group">
 								<%= f.text_area :body, rows: 8, class: "form-control" %>
 							</div>
-						</div>
-						<div class="form-group">
-							<div class="action">
-								<%= f.submit "Submit Answer", class: "btn btn-default" %>
+							<div class="form-group">
+								<%= f.submit "Submit Answer", class: "btn btn-default btn-sm" %>
 							</div>
-						</div>
-					<% end %>
+						<% end %>
+					</div>
 				</div>
-			</div>
+			<% end %>
+
 		</div>
 	</div>
 </div>

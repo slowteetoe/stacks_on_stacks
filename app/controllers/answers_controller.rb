@@ -1,13 +1,18 @@
 class AnswersController < ApplicationController
 
   before_action :authenticate_user!, only: [:create]
-  before_action :set_answer, only: [:upvote, :downvote, :remove_vote]
+  before_action :set_question, only: [:create, :update]
+  before_action :set_answer, except: [:create]
 
   def create
-    question = Question.find(params[:question_id])
-    question.answers << Answer.new(body: params[:answer][:body], author: current_user.username)
-    question.save!
-    redirect_to question, notice: "Answer submitted!"
+    @question.answers << Answer.new(body: params[:answer][:body], author: current_user.username)
+    @question.save!
+    redirect_to @question, notice: "Answer submitted!"
+  end
+
+  def update
+    @answer.update_attributes(answer_params)
+    redirect_to @question, notice: 'Answer updated!'
   end
 
   def upvote
@@ -29,6 +34,10 @@ class AnswersController < ApplicationController
   end
 
   private
+
+  def set_question
+    @question = Question.find(params[:question_id])
+  end
 
   def set_answer
     id = params[:id]
