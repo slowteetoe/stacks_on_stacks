@@ -12,7 +12,7 @@
 }
 
 body {padding-top: 51px;}
-#home, #signin, #signup, #signedit, #reset, #faq, #usershow, #userindex, #qnew, #qindex, #qshow, #results, #profile, #tags, #tagged {padding-top: 60px; padding-bottom: 100px;}
+#home, #signin, #signup, #signedit, #reset, #faq, #usershow, #userindex, #qnew, #qindex, #qshow, #qedit, #results, #profile, #tags, #tagged {padding-top: 60px; padding-bottom: 100px;}
 .navbar, .alert {-webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px;}
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {color: #111;}
 .navbar-default .navbar-nav > li > a.nav-btn {padding-top: 8px; padding-bottom: 8px;}
@@ -85,6 +85,11 @@ div.highlight {
 	.glyphicon-chevron-up:hover, .glyphicon-chevron-down:hover {cursor: pointer; color: #F0AD4E;}
 	.vcount {font-size: 36px; line-height: 28px; font-weight: bolder; z-index: -1; color: #999;}
 	.vcount:hover {cursor: default;}
+}
+
+#qedit {
+	.btn-info {margin-right: 5px;}
+	a:hover {text-decoration: none;}
 }
 
 #tags {
